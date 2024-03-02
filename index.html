@@ -7,17 +7,115 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 
 </head>
-<body class="px-[10%] bg-red-500">
-    <header>
-        <div>RedHot</div>
-        <div>
-
+<body class="px-[10%] py-10">
+    <header class="flex justify-between items-center">
+        <div class="font-bold text-3xl text-black">RedHot</div>
+        <div class="flex gap-5 relative">
+            <div class="icon hidden sm:flex md:flex lg:flex xl:flex gap-4 ">
+                <img class="i-home" src="images/home.png" alt="">
+                <p class="t-home">Home</p>
+                <img class="i-pen" src="images/pen.png" alt="">
+                <p class="t-pen">Pen</p>
+                <img class="i-add" src="images/add.png" alt="">
+                <p class="t-add">Add</p>
+                <img class="i-flag" src="images/flag.png" alt="">
+                <p class="t-flag">Flag</p>
+            </div>
+            <button class="buttom px-11">Sign In</button>
         </div>
     </header>
 
-    <main></main>
+    <main>
+
+        <section class="bnnerimg flex flex-col lg:flex-row xl:flex-row p-24 justify-between items-center rounded-3xl mt-14 w-full">
+            <div>
+                <h1 class="text-6xl text-white font-bold">Welcome to the<br><span id="gradint">RedHot</span> Forum</h1>
+                <p class="text-[#d4d4d4] font-semibold text-lg mt-4">Share your favorite opinion and win and wp<br>forum coffee mug!</p>
+                <div class="bg-white rounded-full mt-5 w-64 md:w-96 lg:w-96 xl:w-96 pl-5 flex p-2">
+                    <input class="outline-none w-full" type="text" placeholder="Search here anything">
+                    <button class="buttom px-5">Search</button>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 md:p-9 lg:md:p-9 xl:md:p-9 rounded-3xl mt-5 ml-5 mr-[20px] sm:mr-0 md:mr-0 lg:mr-0 xl:mr-0 ">
+                <pre class="text-2xl font-semibold mt-5">Registered Users      01</pre>
+                <pre class="text-2xl font-semibold mt-5">Forum                        05</pre>
+                <pre class="text-2xl font-semibold mt-5">Topics                        01</pre>
+                <pre class="text-2xl font-semibold mt-5">Replies                       01</pre>
+            </div>
+        </section>
+
+
+        <section>
+            <h1 class="text-center text-4xl text-black font-extrabold mt-24">Let’s Discuss</h1>
+            <p class="px-[20%] text-center mt-5 text-lg">Yes, you can run unit tests and view the results directly within the app. The integrated testing features allow for a streamlined .</p>
+
+            <div class="flex flex-col lg:flex-row xl:flex-row md:flex-row gap-3 mt-10">
+                <div class="flex flex-col md:flex-row lg:flex-row xl:flex-row  gap-5 bg-[#F3F3F5] p-6 py-10 rounded-xl w-full md:w-[65%] lg:w-[65%] xl:w-[65%]">
+                    <div>
+                        <div class="box w-16 h-16 rounded-xl bg-white relative">
+                            <div class="point h-4 w-4 bg-green-500 rounded-full absolute top-[-5px] right-[-5px] "></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex gap-6">
+                            <h4 class="font-bold text-[#000000d6] text-sm"># Music </h4>
+                            <h4 class="font-bold text-[#000000d6] text-sm">Author : Awlad Hossain</h4>
+                        </div>
+                        <h1 class="text-xl font-bold text-black mt-2">10 Kids Unaware of Their Halloween Costume</h1>
+                        <p class="mt-2 mb-5">It’s one thing to subject yourself to ha Halloween costume mishap because, hey that’s your prerogative</p>
+                        <hr style="border-top: 1px dashed rgba(0, 0, 0, 0.339);">
+                        <div class="flex gap-6 mt-5">
+                            <div class="flex gap-3">
+                                <img src="images/massage.png" alt="">
+                                <span>560</span>
+                            </div>
+                            <div class="flex gap-3">
+                                <img src="images/eye.png" alt="">
+                                <span>1,568</span>
+                            </div>
+                            <div class="flex gap-3">
+                                <img src="images/clock.png" alt="">
+                                <span>5 min</span>
+                            </div>
+                            <img class="ml-auto" src="images/email.png" alt="">
+                        </div>
+                        
+
+                    </div>
+                </div>
+
+                <div class="p-5 bg-[#12132d10] w-full md:-[35%] lg:w-[35%] xl:w-[65%] rounded-xl">
+                    <div class="flex justify-between">
+                        <h2 class="text-black text-xl font-bold">Title</h2>
+                        <div class="flex">
+                            <img src="images/correct.png" alt="">
+                            <pre class="ml-2 mr-2">Mark as read</pre>
+                            <span>(4)</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-4 flex justify-between items-center mt-3">
+                        <div>
+                            <h1 class="font-bold">10 Kids Unaware of Their Halloween Costume</h1>
+                        </div>
+                        <div class="flex">
+                            <img src="images/eye.png" alt="">
+                            <span class="mr-5 ml-2">1,568</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
 
     <footer></footer>
 </body>
