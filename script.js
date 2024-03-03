@@ -1,17 +1,29 @@
-async function  dataLoad(url) {
+async function dataLoad(url) {
     const res = await fetch(url);
     const data = await res.json();
 
     const continer = document.getElementById('continer');
     continer.textContent = '';
 
+    const nodata = document.getElementById('nodata');
+    const emptydiv = document.getElementById('emptydiv');
+
+    if(data.message == 'No posts found!!!'){
+        emptydiv.classList.remove("hidden");
+        emptydiv.classList.add("flex");
+        nodata.innerText = ' ' + ` " ${inputdata} "`;
+    }else{
+        emptydiv.classList.add("hidden");
+        emptydiv.classList.remove("flex");
+    }
+
 
     for (const item of data.posts) {
 
-    const div = document.createElement('div');
-    div.className = 'flex flex-col md:flex-row lg:flex-row xl:flex-row  gap-5 bg-[#F3F3F5] p-6 py-10 rounded-xl w-full';
+        const div = document.createElement('div');
+        div.className = 'flex flex-col md:flex-row lg:flex-row xl:flex-row  gap-5 bg-[#F3F3F5] p-6 py-10 rounded-xl w-full';
 
-    div.innerHTML = `
+        div.innerHTML = `
 
                          <div>
                             <div class="box w-16 h-16 rounded-xl bg-white relative flex justify-center items-center">
@@ -42,7 +54,7 @@ async function  dataLoad(url) {
                                     <span>${item.posted_time} min</span>
                                 </div>
 
-                                <img onclick="reded('${item.title} divide ${item.view_count}')" class="ml-auto" src="images/email.png" alt="">
+                                <img onclick="reded('${item.title.replace("Beginner's", 'begen')} divide ${item.view_count}')" class="ml-auto" src="images/email.png" alt="">
                                
                                 
                             </div>
@@ -50,18 +62,18 @@ async function  dataLoad(url) {
     
 
     `
-    continer.appendChild(div);
+        continer.appendChild(div);
 
     }
 }
 
 dataLoad("https://openapi.programming-hero.com/api/retro-forum/posts");
 
-function reded(titleview ){
+function reded(titleview) {
     console.log(titleview);
 
-    const titleviews =  titleview.split('divide');
-    const title = titleviews[0];
+    const titleviews = titleview.split('divide');
+    const title = titleviews[0].replace("begen", "Beginner's");
     const view = titleviews[1];
     const TitleConti = document.getElementById('TitleConti');
     const div = document.createElement('div');
@@ -80,23 +92,26 @@ function reded(titleview ){
     TitleConti.appendChild(div);
 
     const totalread = document.getElementById('totalread');
-    totalread.innerText = parseInt(totalread.innerText)+1;
+    totalread.innerText = parseInt(totalread.innerText) + 1;
 }
 
 
-let uri ='';
-document.getElementById('Search').addEventListener('click', function(){
+let uri = '';
+let inputdata = '';
+document.getElementById('Search').addEventListener('click', function () {
     const inputvalu = document.getElementById('inputsearch').value;
     console.log(inputvalu);
+    inputdata = inputvalu;
 
     const loding = document.getElementById('looding');
     loding.classList.remove('hidden')
     loding.classList.add('flex');
     setTimeout(buttonclick, 2000);
-    uri = "https://openapi.programming-hero.com/api/retro-forum/posts?category="+inputvalu;
+ 
+    uri = "https://openapi.programming-hero.com/api/retro-forum/posts?category=" + inputvalu;
 })
 
-function buttonclick(){
+function buttonclick() {
     const loding = document.getElementById('looding');
     loding.classList.add('hidden')
     loding.classList.remove('flex');
@@ -110,7 +125,7 @@ function buttonclick(){
 
 
 
-async function latastPost(){
+async function latastPost() {
     const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/latest-posts');
     const data = await res.json();
 
@@ -118,29 +133,27 @@ async function latastPost(){
 
     for (const item of data) {
         console.log(item.title);
-    const div = document.createElement('div');
-    div.className = "p-5 border-2 border-[#00000015] rounded-3xl w-full";
-    div.innerHTML = `
-                <div class="w-full h-44 bg-[#12132d12] rounded-3xl flex justify-center items-center">
-                        <img class="mb-5" width="220px" src="images/joinforum.png" alt="">
+        const div = document.createElement('div');
+        div.className = "p-5 border-2 border-[#00000015] rounded-3xl w-full";
+        div.innerHTML = `
+                    <div class="w-full h-44 bg-[#12132d12] rounded-3xl flex justify-center items-center bg-cover bg-center" style="background-image: url('${item.cover_image}')">
                     </div>
 
                     <div class="flex mt-4">
                         <img src="images/calander.png" alt="">
-                        <span class="ml-2">29 January 2024</span>
+                        <span class="ml-2">${item.author?.posted_date ? item.author.posted_date: 'No Publish Date' }</span>
                     </div>
-                    <h2 class="mt-4 text-xl text-black font-extrabold mb-4">What will a mars habitat force that impact
-                        in our daily life!!!</h2>
-                    <p>Yes, you can run unit tests and view the results directly within the app. </p>
+                    <h2 class="mt-4 text-xl text-black font-extrabold mb-4">${item.title}</h2>
+                    <p>${item.description}</p>
                     <div class="flex mt-4 gap-3">
-                        <img src="images/man.png" alt="">
+                        <img width="40px" class="rounded-full" src="${item.profile_image}" alt="">
                         <div>
-                            <h4 class="font-bold">Cameron Williamson</h4>
-                            <span>Unknown</span>
+                            <h4 class="font-bold">${item.author.name}</h4>
+                            <span>${item.author?.designation ? item.author?.designation: 'Unknown'}</span>
                         </div>
                 </div>
     `
-    latastConti.appendChild(div);
-}
+        latastConti.appendChild(div);
+    }
 }
 latastPost();
