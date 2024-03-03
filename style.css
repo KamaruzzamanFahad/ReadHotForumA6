@@ -28,3 +28,9 @@ font-style: normal;
 font-weight: 900;
 line-height: 86px;
 }
+.true{
+    background-color: #10B981;
+}
+.false{
+    background-color: #FF3434;
+}
